@@ -117,7 +117,7 @@ class App extends Component {
               <div className="links">
                 <a
                   target="_blank"
-                  href="https://github.com/appbaseio/reactivesearch"
+                  href="https://github.com/ycortes94/Final-Project"
                   className="btn link"
                 >
                   <i className="fa fa-github" aria-hidden="true" /> Github
@@ -157,58 +157,16 @@ class App extends Component {
                   }}
                 />
               </div>
-
-              <div className="box">
-                <MultiList
-                  dataField="cuisine.keyword"
-                  title="Cuisine Options"
-                  componentId="cuisineReactor"
-                  placeholder="Filter Cuisine"
-                  showFilter={true}
-                  filterLabel="Cuisine Options"
-                  react={{
-                    and: [
-                      "ratingsReactor",
-                      "currencyReactor",
-                      "deliveringNowReactor",
-                      "tableBookinReactor",
-                      "musicReactor",
-                      "bookingReactor",
-                      "nameReactor",
-                      "RangeSliderSensor"
-                    ]
-                  }}
-                />
-              </div>
-
-              <div className="box">
-                <RangeSlider
-                  componentId="RangeSliderSensor"
-                  dataField="average_cost_for_two"
-                  title="Average Cost for Two"
-                  range={{
-                    start: 0,
-                    end: 7000
-                  }}
-                  rangeLabels={{
-                    start: "Low",
-                    end: "High"
-                  }}
-                  react={{
-                    and: ["cuisineReactor", "currencyReactor"]
-                  }}
-                />
-              </div>
-
+              
               <div className="box">
                 <RatingsFilter
                   componentId="ratingsReactor"
                   dataField="rating"
                   title="Avg. Customer Reviews"
                   data={[
-                    { start: 4, end: 5, label: ">= 4 stars" },
-                    { start: 3, end: 5, label: ">= 3 stars" },
-                    { start: 2, end: 5, label: ">= 2 stars" },
+                    { start: 4, end: 5, label: "> 4 stars" },
+                    { start: 3, end: 5, label: "> 3 stars" },
+                    { start: 2, end: 5, label: "> 2 stars" },
                     { start: 1, end: 5, label: "> 1 stars" }
                   ]}
                   showFilter={true}
