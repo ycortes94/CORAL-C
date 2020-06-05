@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import  MapContainer  from "./Map";
 import {
   ReactiveBase,
   ResultList,
@@ -58,6 +59,23 @@ class App extends Component {
     return result;
   }
 
+  componentDidMount(){
+    const embedcode = `<script>
+          (function() {
+            var cx = '009696093307156488668:8us5tiyr6zs';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search></gcse:search>`
+        // eslint-disable-next-line no-undef
+      $('#gsearch').html(embedcode)
+      }
+
   onPopoverClick(marker) {
     return (
       <div
@@ -106,13 +124,7 @@ class App extends Component {
               id="navbarSupportedContent"
             >
               <div className="col-lg-7 dataSearch">
-                <DataSearch
-                  componentId="nameReactor"
-                  placeholder="Search for Restaurants, Bars"
-                  dataField="name"
-                  searchInputId="NameSearch"
-                  iconPosition="right"
-                />
+              
               </div>
               <div className="links">
                 <a
@@ -135,21 +147,22 @@ class App extends Component {
 
           <div className="row">
             <div className="col-8 col-lg-3 col-md-3 col-sm-4 scroll">
+
               <div className="box">
                 <MultiList
-                  dataField="currency.keyword"
-                  title="Currency Options"
-                  componentId="currencyReactor"
-                  placeholder="Filter Currency"
+                  dataField="cuisine.keyword"
+                  title="Cuisine Options"
+                  componentId="cuisineReactor"
+                  placeholder="Filter Cuisine"
                   showFilter={true}
-                  filterLabel="Currency Options"
+                  filterLabel="Cuisine Options"
                   react={{
                     and: [
                       "ratingsReactor",
-                      "cuisineReactor",
+                      "currencyReactor",
                       "deliveringNowReactor",
                       "tableBookinReactor",
-                      "deliveryReactor",
+                      "musicReactor",
                       "bookingReactor",
                       "nameReactor",
                       "RangeSliderSensor"
@@ -157,7 +170,8 @@ class App extends Component {
                   }}
                 />
               </div>
-              
+
+
               <div className="box">
                 <RatingsFilter
                   componentId="ratingsReactor"
@@ -216,58 +230,13 @@ class App extends Component {
               </div>
             </div>
             <div className="col-12 col-lg-6 col-md-6 col-sm-8 scroll marginBottom">
-              <SelectedFilters />
-              <ResultList
-                componentId="queryResult"
-                dataField="name"
-                from={0}
-                size={15}
-                onData={this.onData}
-                pagination={true}
-                react={{
-                  and: [
-                    "currencyReactor",
-                    "ratingsReactor",
-                    "cuisineReactor",
-                    "deliveringNowReactor",
-                    "bookingReactor",
-                    "deliveryReactor",
-                    "tableBookinReactor",
-                    "nameReactor",
-                    "RangeSliderSensor"
-                  ]
-                }}
-              />
+            {
+              <div id ='gsearch'></div>
+            }
             </div>
 
             <div className="col-lg-3 col-md-3 col-sm-6">
-              <ReactiveMap
-                dataField="location"
-                componentId="maps"
-                defaultZoom={13}
-                defaultCenter={{ lat: 14.55436, lng: -85.76 }}
-                historicalData={true}
-                setMarkerCluster={true}
-                showMapStyles={false}
-                showSearchAsMove={false}
-                defaultMapStyle="Light Monochrome"
-                onPopoverClick={this.onPopoverClick}
-                autoCenter={true}
-                size={100}
-                react={{
-                  and: [
-                    "currencyReactor",
-                    "ratingsReactor",
-                    "cuisineReactor",
-                    "deliveringNowReactor",
-                    "bookingReactor",
-                    "deliveryReactor",
-                    "tableBookinReactor",
-                    "nameReactor",
-                    "RangeSliderSensor"
-                  ]
-                }}
-              />
+            <MapContainer />;
             </div>
           </div>
         </ReactiveBase>
