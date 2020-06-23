@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema =  mongoose.Schema;
 
 let biz = new Schema({
-    biz_Name: {
+    biz_name: {
         type: String
     },
     biz_description: {

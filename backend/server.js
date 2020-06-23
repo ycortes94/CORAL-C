@@ -12,11 +12,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bizRoutes = express.Router();
 const PORT = 4000;
 // End const declaration
 
+let Biz = require('./biz.model')
+
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/bizs', bizRoutes);
 
 // Establish connection with DB 
 mongoose.connect('mongodb://127.0.0.1:27017', {
@@ -32,3 +36,16 @@ app.use(bodyParser.json());app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
 // End Logging
+
+// Setup Router
+bizRoutes.route('/').get(function(req,res){
+    Biz.find(function(err, bizs){
+        if(err){
+            console.log(err);
+        }
+        else {
+            res.json(bizs);
+        }
+    });
+});
+
