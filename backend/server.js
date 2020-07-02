@@ -14,6 +14,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bizRoutes = express.Router();
 const PORT = 4000;
+const mongoURI = "mongodb+srv://root:HkYDrZGfCfTMHM3@cluster0.b2do9.azure.mongodb.net/dev?retryWrites=true&w=majority";
 // End const declaration
 
 let Biz = require('./biz.model')
@@ -23,9 +24,19 @@ app.use(bodyParser.json());
 app.use('/bizs', bizRoutes);
 
 // Establish connection with DB 
-mongoose.connect('mongodb://127.0.0.1:27017', {
-    useNewUrlParser: true
-});
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    /*useCreateIndex: true,
+    useFindAndModify: false,
+    autoIndex: false, // Don't build indexes
+    poolSize: 10, // Maintain up to 10 socket connections
+    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    family: 4 // Use IPv4, skip trying IPv6*/
+  };
+
+mongoose.connect(mongoURI, options);
 const connection =  mongoose.connection;
 
 // Begin Logging
