@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import  MapContainer  from "./Map";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   ReactiveBase,
   ResultList,
@@ -21,7 +22,14 @@ import breakfast from "./Images/breakfast.jpeg";
 import desserts from "./Images/desserts.jpeg";
 import sandwich from "./Images/sandwich.jpeg";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import AddBiz from "./components/add-biz.component";
+import EditBiz from "./components/edit-biz.component";
+import BizList from "./components/biz-list.component";
+
 class App extends Component {
+  
   onData(resturant) {
     const image =
       resturant.cuisine === "Bar Food"
@@ -96,6 +104,29 @@ class App extends Component {
 
   render() {
     return (
+
+      // We need something like this For a nav bar
+      // <Router>
+      //   <div className="container">
+      //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      //       <Link to="/" className="navbar-brand">CORAL-C</Link>
+      //       <div className="collpase navbar-collapse">
+      //         <ul className="navbar-nav mr-auto">
+      //           <li className="navbar-item">
+      //             <Link to="/" className="nav-link">Local Resources</Link>
+      //           </li>
+      //           <li className="navbar-item">
+      //             <Link to="/create" className="nav-link"> Todo</Link>
+      //           </li>
+      //         </ul>
+      //       </div>
+      //     </nav>
+      //     <br/>
+      //     <Route path="/" exact component={AddBiz} />
+      //     <Route path="/edit/:id" component={EditBiz} />
+      //     <Route path="/add" component={BizList} />
+      //   </div>
+      // </Router>
       <div className="container-fluid">
         <ReactiveBase
           app="yelp-app"
