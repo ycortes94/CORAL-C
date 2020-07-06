@@ -1,9 +1,6 @@
 // Setting up the Basic Express Server Backend
 // Start server with `nodemon server` 
 // Listens on port 4000
-// Start mongo with `mongod`
-// create db by launching mongo then type `use biz`
-// default port is 27017, if you change this change 
 // mongoose.connect
 
 // Begin const declaration
@@ -21,21 +18,19 @@ let Biz = require('./biz.model')
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/bizs', bizRoutes);
 
 // Establish connection with DB 
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    /*useCreateIndex: true,
+    useCreateIndex: true,
     useFindAndModify: false,
     autoIndex: false, // Don't build indexes
     poolSize: 10, // Maintain up to 10 socket connections
     serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-    family: 4 // Use IPv4, skip trying IPv6*/
+    family: 4 // Use IPv4, skip trying IPv6
   };
-
 mongoose.connect(mongoURI, options);
 const connection =  mongoose.connection;
 
@@ -43,13 +38,10 @@ const connection =  mongoose.connection;
 connection.once('open', function(){
     console.log("MongoDB database connection established successfully");
 })
-app.use(bodyParser.json());app.listen(PORT, function() {
-    console.log("Server is running on Port: " + PORT);
-});
-// End Logging
+
 
 // Setup Router
-bizRoutes.route('/').get(function(req,res){
+bizRoutes.route('/').get(function(req, res){
     Biz.find(function(err, bizs){
         if(err){
             console.log(err);
@@ -60,3 +52,48 @@ bizRoutes.route('/').get(function(req,res){
     });
 });
 
+//Get Item
+bizRoutes.route('/:id').get(function(req, res) {
+    let id = req.params.id;
+    Biz.findById(id, function(err, biz) {
+        res.json(biz);
+    });
+});
+
+// Upadate Entry
+bizRoutes.route('/update/:id').post(function(req, res) {
+    Biz.findById(req.params.id, function(err, biz) {
+        if (!biz)
+            res.status(404).send("data is not found");
+        else
+            biz.biz_name= req.body.biz_name;
+            biz.biz_description = req.body.biz_description;
+            biz.biz_address = req.body.biz_address;
+            biz.biz_type = req.body.biz_type;            
+            biz.save().then(biz => {
+                res.json('Biz updated!');
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible");
+            });
+    });
+});
+
+//Add Entry
+bizRoutes.route('/add').post(function(req, res) {
+    let biz = new Biz(req.body);
+    biz.save()
+        .then(biz => {
+            res.status(200).json({'biz': 'biz added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('Failed to add biz');
+        });
+});
+
+app.use('/bizs', bizRoutes);
+
+
+app.use(bodyParser.json());app.listen(PORT, function() {
+    console.log("Server is running on Port: " + PORT);
+});
