@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const Schema =  mongoose.Schema;
 
-let biz = new Schema({
+let Biz = new Schema({
     biz_name: {
         type: String
     },
@@ -21,5 +21,5 @@ let biz = new Schema({
     }
 });
 
-module.exports = mongoose.model('biz',biz);
+module.exports = mongoose.model('Biz',Biz);
 

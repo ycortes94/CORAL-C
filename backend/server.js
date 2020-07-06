@@ -42,12 +42,12 @@ connection.once('open', function(){
 
 // Setup Router
 bizRoutes.route('/').get(function(req, res){
-    Biz.find(function(err, bizs){
+    Biz.find(function(err, biz){
         if(err){
             console.log(err);
         }
         else {
-            res.json(bizs);
+            res.json(biz);
         }
     });
 });
@@ -66,7 +66,7 @@ bizRoutes.route('/update/:id').post(function(req, res) {
         if (!biz)
             res.status(404).send("data is not found");
         else
-            biz.biz_name= req.body.biz_name;
+            biz.biz_name = req.body.biz_name;
             biz.biz_description = req.body.biz_description;
             biz.biz_address = req.body.biz_address;
             biz.biz_type = req.body.biz_type;            
@@ -89,6 +89,7 @@ bizRoutes.route('/add').post(function(req, res) {
         .catch(err => {
             res.status(400).send('Failed to add biz');
         });
+    console.log(biz);
 });
 
 app.use('/bizs', bizRoutes);
