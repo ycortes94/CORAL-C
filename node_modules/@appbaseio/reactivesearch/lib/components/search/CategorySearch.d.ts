@@ -33,6 +33,7 @@ export interface CategorySearchProps extends CommonProps {
 	onSuggestion?: (...args: any[]) => any;
 	onValueChange?: (...args: any[]) => any;
 	onValueSelected?: (...args: any[]) => any;
+	nestedField?: string;
 	placeholder?: string;
 	queryFormat?: types.queryFormatSearch;
 	react?: types.react;
@@ -40,6 +41,7 @@ export interface CategorySearchProps extends CommonProps {
 	showFilter?: boolean;
 	showIcon?: boolean;
 	title?: types.title;
+	loader?: types.title;
 	theme?: types.style;
 	themePreset?: types.themePreset;
 }

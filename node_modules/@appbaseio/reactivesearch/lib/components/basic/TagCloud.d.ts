@@ -9,7 +9,9 @@ export interface TagCloudProps extends CommonProps {
 	defaultSelected?: types.stringOrArray;
 	filterLabel?: string;
 	innerClass?: types.style;
+	loader?: any;
 	multiSelect?: boolean;
+	nestedField?: string;
 	onValueChange?: (...args: any[]) => any;
 	queryFormat?: types.queryFormatSearch;
 	react?: types.react;

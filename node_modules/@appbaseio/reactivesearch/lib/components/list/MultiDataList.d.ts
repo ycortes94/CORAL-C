@@ -11,6 +11,7 @@ export interface MultiDataList extends CommonProps {
 	filterLabel?: string;
 	innerClass?: types.style;
 	onValueChange?: (...args: any[]) => any;
+	nestedField?: string;
 	placeholder?: string;
 	queryFormat?: types.queryFormatSearch;
 	react?: types.react;
@@ -20,6 +21,8 @@ export interface MultiDataList extends CommonProps {
 	showSearch?: boolean;
 	themePreset?: types.themePreset;
 	title?: types.title;
+	showCount?: boolean;
+	renderListItem?: (...args: any[]) => any;
 }
 
 declare const MultiDataList: React.ComponentType<MultiDataList>;

@@ -11,12 +11,14 @@ export interface DynamicRangeSliderProps extends CommonProps {
 	filterLabel?: string;
 	innerClass?: types.style;
 	interval?: number;
+	nestedField?: string;
 	onDrag?: (...args: any[]) => any;
 	onValueChange?: (...args: any[]) => any;
 	rangeLabels?: (...args: any[]) => any;
 	react?: types.react;
 	showHistogram?: boolean;
 	snap?: boolean;
+	loader?: any;
 	stepValue?: number;
 	title?: types.title;
 }

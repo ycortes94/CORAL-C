@@ -24,9 +24,9 @@ import sandwich from "./Images/sandwich.jpeg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import AddBiz from "./components/add-biz.component";
-import EditBiz from "./components/edit-biz.component";
-import BizList from "./components/biz-list.component";
+// import AddBiz from "./components/add-biz.component";
+// import EditBiz from "./components/edit-biz.component";
+// import BizList from "./components/biz-list.component";
 
 class App extends Component {
   
