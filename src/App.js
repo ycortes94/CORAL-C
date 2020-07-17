@@ -30,37 +30,30 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   
-  onData(resturant) {
+  onData(resource) {
     const image =
-      resturant.cuisine === "Bar Food"
+      resource.cuisine === "Bar Food"
         ? barFood
-        : resturant.cuisine === "Desserts"
+        : resource.cuisine === "Desserts"
         ? desserts
-        : resturant.cuisine === "Breakfast"
+        : resource.cuisine === "Breakfast"
         ? breakfast
-        : resturant.cuisine === "American"
+        : resource.cuisine === "American"
         ? americanFood
         : sandwich;
 
-    const stars = [];
-    const { rating, currency, address, cuisine } = resturant;
-    for (let x = 0; x < rating; x++) {
-      stars.push(
-        <span key={x}>
-          <i className="fa fa-star" />
-        </span>
-      );
-    }
+    
+    const { biz_address, biz_type, biz_description } = resource;
 
     const result = {
       image: image,
-      title: resturant.name,
+      title: resource.biz_name,
       description: (
         <div>
-          <p>{address}</p>
-          <span className="tag">{currency}</span>
-          <span className="tag">{cuisine}</span>
-          <div>Avg. Customer Reviews : {stars}</div>
+          <p>{biz_address}</p>
+          <span className="tag">{biz_description}</span>
+          <span className="tag">{biz_type}</span>
+          {/* <div>Avg. Customer Reviews : {stars}</div> */}
         </div>
       )
     };
@@ -68,20 +61,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const embedcode = `<script>
-          (function() {
-            var cx = '009696093307156488668:8us5tiyr6zs';
-            var gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-          })();
-        </script>
-        <gcse:search></gcse:search>`
-        // eslint-disable-next-line no-undef
-      $('#gsearch').html(embedcode)
+    
       }
 
   onPopoverClick(marker) {
@@ -104,7 +84,6 @@ class App extends Component {
 
   render() {
     return (
-
       // We need something like this For a nav bar
       // <Router>
       //   <div className="container">
@@ -129,14 +108,17 @@ class App extends Component {
       // </Router>
       <div className="container-fluid">
         <ReactiveBase
-          app="yelp-app"
-          credentials="hkXdk3vcA:a32683f3-c8ad-45db-8c86-2ac2c0f45e0c"
-          type="yelp-app"
+          // app="yelp-app"
+          // credentials="hkXdk3vcA:a32683f3-c8ad-45db-8c86-2ac2c0f45e0c"
+          // type="yelp-app"
+          app="coral-c"
+          credentials="ckohWJyxP:f76e9723-65e7-492d-91c1-cb2e63d83897"
         >
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="#">
               CORAL-C
             </a>
+          
 
             <button
               className="navbar-toggler"
@@ -147,6 +129,7 @@ class App extends Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
+        
               <span className="navbar-toggler-icon" />
             </button>
 
@@ -155,8 +138,15 @@ class App extends Component {
               id="navbarSupportedContent"
             >
               <div className="col-lg-7 dataSearch">
-              
+                <DataSearch
+                  componentId="nameReactor"
+                  placeholder="Search for Resources"
+                  dataField="name"
+                  searchInputId="NameSearch"
+                  iconPosition="right"
+                />
               </div>
+
               <div className="links">
                 <a
                   target="_blank"
@@ -181,89 +171,51 @@ class App extends Component {
 
               <div className="box">
                 <MultiList
-                  dataField="cuisine.keyword"
-                  title="Cuisine Options"
+                  dataField="biz_type"
+                  title="Resource Options"
                   componentId="cuisineReactor"
-                  placeholder="Filter Cuisine"
+                  placeholder="Filter Resource"
                   showFilter={true}
-                  filterLabel="Cuisine Options"
-                  react={{
-                    and: [
-                      "ratingsReactor",
-                      "currencyReactor",
-                      "deliveringNowReactor",
-                      "tableBookinReactor",
-                      "musicReactor",
-                      "bookingReactor",
-                      "nameReactor",
-                      "RangeSliderSensor"
-                    ]
-                  }}
+                  filterLabel="Resource Options"
+                  // react={{
+                  //   and: [
+                  //     "ratingsReactor",
+                  //     "currencyReactor",
+                  //     "deliveringNowReactor",
+                  //     "tableBookinReactor",
+                  //     "musicReactor",
+                  //     "bookingReactor",
+                  //     "nameReactor",
+                  //     "RangeSliderSensor"
+                  //   ]
+                  // }}
                 />
               </div>
 
-
-              <div className="box">
-                <RatingsFilter
-                  componentId="ratingsReactor"
-                  dataField="rating"
-                  title="Avg. Customer Reviews"
-                  data={[
-                    { start: 4, end: 5, label: "> 4 stars" },
-                    { start: 3, end: 5, label: "> 3 stars" },
-                    { start: 2, end: 5, label: "> 2 stars" },
-                    { start: 1, end: 5, label: "> 1 stars" }
-                  ]}
-                  showFilter={true}
-                  filterLabel="Avg. Customer Reviews"
-                  react={{
-                    and: [""]
-                  }}
-                />
-              </div>
-
-              <div className="box">
-                <MultiDataList
-                  dataField="delivering_now"
-                  componentId="deliveringNowReactor"
-                  title="Refine By"
-                  showSearch={false}
-                  data={[
-                    {
-                      label: "Delivering Now",
-                      value: true
-                    }
-                  ]}
-                />
-
-                <MultiDataList
-                  dataField="has_table_booking"
-                  componentId="tableBookinReactor"
-                  showSearch={false}
-                  data={[
-                    {
-                      label: "Has Table Bookings",
-                      value: true
-                    }
-                  ]}
-                />
-                <MultiDataList
-                  dataField="online_delivery"
-                  componentId="deliveryReactor"
-                  showSearch={false}
-                  data={[
-                    {
-                      label: "Online Delivery",
-                      value: true
-                    }
-                  ]}
-                />
-              </div>
             </div>
             <div className="col-12 col-lg-6 col-md-6 col-sm-8 scroll marginBottom">
-            {
-              <div id ='gsearch'></div>
-            }
+              <SelectedFilters />
+              <ResultList
+                componentId="queryResult"
+                dataField="biz_name"
+                from={0}
+                size={15}
+                onData={this.onData}
+                pagination={true}
+                react={{
+                  and: [
+                    "currencyReactor",
+                    "ratingsReactor",
+                    "cuisineReactor",
+                    "deliveringNowReactor",
+                    "bookingReactor",
+                    "deliveryReactor",
+                    "tableBookinReactor",
+                    "nameReactor",
+                    "RangeSliderSensor"
+                  ]
+                }}
+              />
             </div>
 
             <div className="col-lg-3 col-md-3 col-sm-6">
