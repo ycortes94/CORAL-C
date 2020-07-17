@@ -141,7 +141,7 @@ class App extends Component {
                 <DataSearch
                   componentId="nameReactor"
                   placeholder="Search for Resources"
-                  dataField="name"
+                  dataField="biz_name"
                   searchInputId="NameSearch"
                   iconPosition="right"
                 />
@@ -220,6 +220,7 @@ class App extends Component {
 
             <div className="col-lg-3 col-md-3 col-sm-6">
             <MapContainer />;
+            
             </div>
           </div>
         </ReactiveBase>
