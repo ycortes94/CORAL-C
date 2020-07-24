@@ -44,10 +44,10 @@ connection.once('open', function(){
 bizRoutes.route('/').get(function(req, res){
     Biz.find(function(err, biz){
         if(err){
-            console.log(err);
+            return console.log(err);
         }
         else {
-            res.json(biz);
+            return res.json(biz);
         }
     });
 });
@@ -69,6 +69,7 @@ bizRoutes.route('/update/:id').post(function(req, res) {
             biz.biz_name = req.body.biz_name;
             biz.biz_description = req.body.biz_description;
             biz.biz_address = req.body.biz_address;
+            biz.biz_zip = req.body.biz_zip;
             biz.biz_type = req.body.biz_type;            
             biz.save().then(biz => {
                 res.json('Biz updated!');
