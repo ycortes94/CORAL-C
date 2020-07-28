@@ -24,10 +24,6 @@ import sandwich from "./Images/sandwich.jpeg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// import AddBiz from "./components/add-biz.component";
-// import EditBiz from "./components/edit-biz.component";
-// import BizList from "./components/biz-list.component";
-
 class App extends Component {
   
   onData(resource) {
@@ -53,16 +49,11 @@ class App extends Component {
           <p>{biz_address}</p>
           <span className="tag">{biz_description}</span>
           <span className="tag">{biz_type}</span>
-          {/* <div>Avg. Customer Reviews : {stars}</div> */}
         </div>
       )
     };
     return result;
   }
-
-  componentDidMount(){
-    
-      }
 
   onPopoverClick(marker) {
     return (
@@ -72,10 +63,10 @@ class App extends Component {
       >
         <div className="col s12">
           <div>
-            <strong>{marker.name}</strong>
+            <strong>{marker.biz_name}</strong>
           </div>
           <p style={{ margin: "5px 0", lineHeight: "18px" }}>
-            {marker.address}
+            {marker.biz_address}
           </p>
         </div>
       </div>
@@ -84,33 +75,8 @@ class App extends Component {
 
   render() {
     return (
-      // We need something like this For a nav bar
-      // <Router>
-      //   <div className="container">
-      //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      //       <Link to="/" className="navbar-brand">CORAL-C</Link>
-      //       <div className="collpase navbar-collapse">
-      //         <ul className="navbar-nav mr-auto">
-      //           <li className="navbar-item">
-      //             <Link to="/" className="nav-link">Local Resources</Link>
-      //           </li>
-      //           <li className="navbar-item">
-      //             <Link to="/create" className="nav-link"> Todo</Link>
-      //           </li>
-      //         </ul>
-      //       </div>
-      //     </nav>
-      //     <br/>
-      //     <Route path="/" exact component={AddBiz} />
-      //     <Route path="/edit/:id" component={EditBiz} />
-      //     <Route path="/add" component={BizList} />
-      //   </div>
-      // </Router>
       <div className="container-fluid">
         <ReactiveBase
-          // app="yelp-app"
-          // credentials="hkXdk3vcA:a32683f3-c8ad-45db-8c86-2ac2c0f45e0c"
-          // type="yelp-app"
           app="coral-c"
           credentials="ckohWJyxP:f76e9723-65e7-492d-91c1-cb2e63d83897"
         >
@@ -149,18 +115,16 @@ class App extends Component {
 
               <div className="links">
                 <a
-                  target="_blank"
                   href="https://github.com/ycortes94/Final-Project"
                   className="btn link"
                 >
                   <i className="fa fa-github" aria-hidden="true" /> Github
                 </a>
                 <a
-                  target="_blank"
-                  href="https://opensource.appbase.io/reactive-manual/"
+                  href="#"
                   className="btn link"
                 >
-                  <i className="fa fa-book" aria-hidden="true" /> Documentation
+                  <i className="fa fa-book" aria-hidden="true" /> Add a Business
                 </a>
               </div>
             </div>
@@ -168,33 +132,20 @@ class App extends Component {
 
           <div className="row">
             <div className="col-8 col-lg-3 col-md-3 col-sm-4 scroll">
-
               <div className="box">
                 <MultiList
-                  dataField="biz_type"
+                  dataField="biz_type" 
                   title="Resource Options"
-                  componentId="cuisineReactor"
+                  componentId="ResourceReactor"
                   placeholder="Filter Resource"
                   showFilter={true}
                   filterLabel="Resource Options"
-                  // react={{
-                  //   and: [
-                  //     "ratingsReactor",
-                  //     "currencyReactor",
-                  //     "deliveringNowReactor",
-                  //     "tableBookinReactor",
-                  //     "musicReactor",
-                  //     "bookingReactor",
-                  //     "nameReactor",
-                  //     "RangeSliderSensor"
-                  //   ]
-                  // }}
                 />
               </div>
 
             </div>
             <div className="col-12 col-lg-6 col-md-6 col-sm-8 scroll marginBottom">
-              <SelectedFilters />
+              <SelectedFilters/>
               <ResultList
                 componentId="queryResult"
                 dataField="biz_name"
@@ -204,12 +155,7 @@ class App extends Component {
                 pagination={true}
                 react={{
                   and: [
-                    "currencyReactor",
-                    "ratingsReactor",
-                    "cuisineReactor",
-                    "deliveringNowReactor",
-                    "bookingReactor",
-                    "deliveryReactor",
+                    "ResourceReactor",
                     "tableBookinReactor",
                     "nameReactor",
                     "RangeSliderSensor"
@@ -219,8 +165,7 @@ class App extends Component {
             </div>
 
             <div className="col-lg-3 col-md-3 col-sm-6">
-            <MapContainer />;
-            
+             <MapContainer></MapContainer>
             </div>
           </div>
         </ReactiveBase>
