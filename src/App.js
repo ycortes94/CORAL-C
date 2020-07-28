@@ -131,20 +131,21 @@ class App extends Component {
           </nav>
 
           <div className="row">
-            <div className="col-8 col-lg-3 col-md-3 col-sm-4 scroll">
+            
+            <div className="col-sm-1 scroll">
               <div className="box">
                 <MultiList
                   dataField="biz_type" 
                   title="Resource Options"
                   componentId="ResourceReactor"
-                  placeholder="Filter Resource"
+                  //placeholder="Filter Resource"
                   showFilter={true}
                   filterLabel="Resource Options"
                 />
               </div>
 
             </div>
-            <div className="col-12 col-lg-6 col-md-6 col-sm-8 scroll marginBottom">
+            <div className="col-sm-5">
               <SelectedFilters/>
               <ResultList
                 componentId="queryResult"
@@ -164,7 +165,7 @@ class App extends Component {
               />
             </div>
 
-            <div className="col-lg-3 col-md-3 col-sm-6">
+            <div className="col-lg-6 col-md-3 col-sm-6">
              <MapContainer></MapContainer>
             </div>
           </div>
