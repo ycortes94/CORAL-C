@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	ReactiveBase,
 	SelectedFilters,
 } from '@appbaseio/reactivesearch';
 import { ReactiveMap  } from '@appbaseio/reactivemaps';
-import { GoogleApiWrapper, Marker } from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
 import './App.css';
 
 class MapContainer extends React.Component {
@@ -35,11 +35,11 @@ class MapContainer extends React.Component {
 			>
 				<div className="row">
 					<div className="col">
-						<SelectedFilters />
+						<SelectedFilters/>
               <ReactiveMap
                 dataField="position"
                 componentId="maps"
-                defaultZoom={15}
+                defaultZoom={12}
                 defaultCenter={{ lat: 37.3347, lng: -121.8815 }}
                 historicalData={true}
                 setMarkerCluster={true}
