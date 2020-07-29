@@ -7,13 +7,13 @@ In the project directory, you can run:
 
 If program errors out, run:
 
-### 'rm -r node_modules/'
+### `rm -r node_modules/`
 
 then run:
 
-### 'npm install'
+### `npm install`
 
-and run 'npm start' again.
+and run `npm start` again.
 
 This will open the website in web browser
 
