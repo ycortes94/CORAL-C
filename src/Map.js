@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-	ReactiveBase,
-	SelectedFilters,
-} from '@appbaseio/reactivesearch';
+import { ReactiveBase, SelectedFilters } from '@appbaseio/reactivesearch';
 import { ReactiveMap  } from '@appbaseio/reactivemaps';
 import { GoogleApiWrapper } from 'google-maps-react';
 import './App.css';

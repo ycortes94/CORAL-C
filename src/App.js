@@ -7,7 +7,6 @@ import {
   SelectedFilters,
   DataSearch,
 } from "@appbaseio/reactivesearch";
-
 import "./App.css";
 
 // Importing Images
@@ -17,8 +16,11 @@ import food from "./Images/Food.jpeg";
 import healthcare from "./Images/Healthcare.jpg";
 import shelter from "./Images/Shelter.png";
 import welfare from "./Images/Welfare.jpeg";
-import sandwich from "./Images/sandwich.jpeg";
 import child from "./Images/Child.jpg";
+
+//Default Image
+import sandwich from "./Images/sandwich.jpeg";
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -142,7 +144,7 @@ class App extends Component {
                   dataField="biz_type" 
                   title="Resource Options"
                   componentId="ResourceReactor"
-                  //placeholder="Filter Resource"
+                  placeholder="Filter Resource"
                   showFilter={true}
                   filterLabel="Resource Options"
                 />
