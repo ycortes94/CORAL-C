@@ -87,7 +87,7 @@ class App extends Component {
           credentials="ckohWJyxP:f76e9723-65e7-492d-91c1-cb2e63d83897"
         >
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               CORAL-C
             </a>
           
