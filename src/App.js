@@ -157,7 +157,7 @@ class App extends Component {
                 componentId="queryResult"
                 dataField="biz_name"
                 from={0}
-                size={15}
+                size={5}
                 onData={this.onData}
                 pagination={true}
                 react={{

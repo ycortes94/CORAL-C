@@ -36,8 +36,8 @@ class MapContainer extends React.Component {
               <ReactiveMap
                 dataField="position"
                 componentId="maps"
-                defaultZoom={12}
-                defaultCenter={{ lat: 37.3347, lng: -121.8815 }}
+                defaultZoom={11}
+                defaultCenter={{ lat: 37.3352, lon: -121.8815 }}
                 historicalData={true}
                 setMarkerCluster={true}
                 showMapStyles={false}
