@@ -14,7 +14,7 @@ const PORT = 4000;
 const mongoURI = "mongodb+srv://root:HkYDrZGfCfTMHM3@cluster0.b2do9.azure.mongodb.net/dev?retryWrites=true&w=majority";
 // End const declaration
 
-let Biz = require('./biz.model')
+let Biz = require('./biz.model').default
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -69,8 +69,8 @@ bizRoutes.route('/update/:id').post(function(req, res) {
             biz.biz_name = req.body.biz_name;
             biz.biz_description = req.body.biz_description;
             biz.biz_address = req.body.biz_address;
-            biz.biz_zip = req.body.biz_zip;
-            biz.biz_type = req.body.biz_type;            
+            biz.biz_type = req.body.biz_type;
+            biz.position = req.body.position;            
             biz.save().then(biz => {
                 res.json('Biz updated!');
             })

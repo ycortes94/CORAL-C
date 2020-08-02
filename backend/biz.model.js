@@ -16,11 +16,18 @@ let Biz = new Schema({
         // I would like this to be a multi-value field
         // For now just a string
     },
-    biz_zip: {
-        type: Number
-    },
     biz_type: {
         type: String
+    },
+    position: {
+        
+            lat: {
+                type: Number
+            },
+            lon: {
+                type: Number
+            }
+        
     }
 });
 
