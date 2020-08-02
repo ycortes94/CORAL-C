@@ -1,23 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Must have node.js installed on workstation.
 
-## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
+If program errors out, run:
 
-### Preview
-URL - https://relpsearch.netlify.com/
+### `rm -r node_modules/`
 
-##
+then run:
 
-EDIT LIVE - https://codesandbox.io/s/1r70lvxkzl
+### `npm install`
 
+and run `npm start` again.
 
-![Alt Text](https://github.com/appbaseio-apps/yelpSearch-App/blob/master/Assets/Features.gif)
+This will open the website in web browser
 
-##
-
-
-![Alt Text](https://github.com/appbaseio-apps/yelpSearch-App/blob/master/Assets/Responsive.gif)

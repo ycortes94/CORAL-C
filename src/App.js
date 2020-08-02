@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import  MapContainer  from "./Map";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   ReactiveBase,
   ResultList,
   MultiList,
-  RatingsFilter,
   SelectedFilters,
-  MultiDataList,
   DataSearch,
-  RangeSlider
 } from "@appbaseio/reactivesearch";
-
-import { ReactiveMap } from "@appbaseio/reactivemaps";
 import "./App.css";
 
 // Importing Images
-import americanFood from "./Images/americanFood.jpg";
-import barFood from "./Images/barFood.jpeg";
-import breakfast from "./Images/breakfast.jpeg";
-import desserts from "./Images/desserts.jpeg";
+import education from "./Images/Education.jpeg"
+import financial from "./Images/Financial.jpeg";
+import food from "./Images/Food.jpeg";
+import healthcare from "./Images/Healthcare.jpg";
+import shelter from "./Images/Shelter.png";
+import welfare from "./Images/Welfare.jpeg";
+import child from "./Images/Child.jpg";
+
+//Default Image
 import sandwich from "./Images/sandwich.jpeg";
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -28,15 +28,21 @@ class App extends Component {
   
   onData(resource) {
     const image =
-      resource.cuisine === "Bar Food"
-        ? barFood
-        : resource.cuisine === "Desserts"
-        ? desserts
-        : resource.cuisine === "Breakfast"
-        ? breakfast
-        : resource.cuisine === "American"
-        ? americanFood
-        : sandwich;
+      resource.biz_type === "Food"
+      ? food
+      : resource.biz_type === "Education"
+      ? education
+      : resource.biz_type === "Financial"
+      ? financial
+      : resource.biz_type === "Health"
+      ? healthcare
+      : resource.biz_type === "Shelter"
+      ? shelter
+      : resource.biz_type === "Welfare"
+      ? welfare
+      : resource.biz_type === "Child"
+      ? child
+      : sandwich;
 
     
     const { biz_address, biz_type, biz_description } = resource;
@@ -81,7 +87,7 @@ class App extends Component {
           credentials="ckohWJyxP:f76e9723-65e7-492d-91c1-cb2e63d83897"
         >
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               CORAL-C
             </a>
           
@@ -138,7 +144,7 @@ class App extends Component {
                   dataField="biz_type" 
                   title="Resource Options"
                   componentId="ResourceReactor"
-                  //placeholder="Filter Resource"
+                  placeholder="Filter Resource"
                   showFilter={true}
                   filterLabel="Resource Options"
                 />
@@ -151,7 +157,7 @@ class App extends Component {
                 componentId="queryResult"
                 dataField="biz_name"
                 from={0}
-                size={15}
+                size={5}
                 onData={this.onData}
                 pagination={true}
                 react={{
