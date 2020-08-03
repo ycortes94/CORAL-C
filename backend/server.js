@@ -14,7 +14,7 @@ const PORT = 4000;
 const mongoURI = "mongodb+srv://root:HkYDrZGfCfTMHM3@cluster0.b2do9.azure.mongodb.net/dev?retryWrites=true&w=majority";
 // End const declaration
 
-let Biz = require('./biz.model').default
+let Biz = require('./biz.model')
 
 app.use(cors());
 app.use(bodyParser.json());

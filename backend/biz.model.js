@@ -13,8 +13,6 @@ let Biz = new Schema({
     },
     biz_address: {
         type: String
-        // I would like this to be a multi-value field
-        // For now just a string
     },
     biz_type: {
         type: String
@@ -31,5 +29,5 @@ let Biz = new Schema({
     }
 });
 
-module.exports = mongoose.model('Biz',Biz);
+module.exports = mongoose.model('Biz', Biz);
 
