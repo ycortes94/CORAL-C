@@ -36,11 +36,11 @@ class App extends Component {
       ? financial
       : resource.biz_type === "Health"
       ? healthcare
-      : resource.biz_type === "Shelter"
+      : resource.biz_type === "Housing"
       ? shelter
-      : resource.biz_type === "Welfare"
+      : resource.biz_type === "Homeless"
       ? welfare
-      : resource.biz_type === "Child"
+      : resource.biz_type === "Child Care"
       ? child
       : sandwich;
 
@@ -112,8 +112,8 @@ class App extends Component {
               <div className="col-lg-7 dataSearch">
                 <DataSearch
                   componentId="nameReactor"
-                  placeholder="Search for Resources"
-                  dataField="biz_name"
+                  placeholder="Enter a Zipcode or Address!"
+                  dataField="biz_address"
                   searchInputId="NameSearch"
                   iconPosition="right"
                 />
@@ -130,7 +130,6 @@ class App extends Component {
                   href="#"
                   className="btn link"
                 >
-                  <i className="fa fa-book" aria-hidden="true" /> Add a Business
                 </a>
               </div>
             </div>
@@ -155,7 +154,7 @@ class App extends Component {
               <SelectedFilters/>
               <ResultList
                 componentId="queryResult"
-                dataField="biz_name"
+                dataField="biz_address"
                 from={0}
                 size={5}
                 onData={this.onData}
