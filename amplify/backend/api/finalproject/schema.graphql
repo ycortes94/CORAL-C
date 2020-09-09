@@ -1,0 +1,9 @@
+type Biz @model {
+  id: ID!
+  name: String!
+  description: String!
+  address: String!
+  type: String!
+  pos_lat: Float!
+  pos_lon: Float
+}
