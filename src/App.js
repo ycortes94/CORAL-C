@@ -20,9 +20,9 @@ import child from "./Images/Child.jpg";
 
 //Default Image
 import sandwich from "./Images/sandwich.jpeg";
-
-
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 class App extends Component {
   
@@ -126,10 +126,8 @@ class App extends Component {
                 >
                   <i className="fa fa-github" aria-hidden="true" /> Github
                 </a>
-                <a
-                  href="#"
-                  className="btn link"
-                >
+                <a className="btn link">
+                <AmplifySignOut />
                 </a>
               </div>
             </div>
@@ -180,4 +178,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthenticator(App);
